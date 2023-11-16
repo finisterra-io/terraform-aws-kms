@@ -107,7 +107,7 @@ resource "aws_kms_grant" "this" {
 
     content {
       encryption_context_equals = try(constraints.value.encryption_context_equals, {})
-      encryption_context_subset = try(constraints.value.encryption_context_subset, {null})
+      encryption_context_subset = try(constraints.value.encryption_context_subset, {})
     }
   }
 
