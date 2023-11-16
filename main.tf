@@ -97,7 +97,7 @@ resource "aws_kms_alias" "this" {
 resource "aws_kms_grant" "this" {
   for_each = { for k, v in var.grants : k => v if var.create }
 
-  name              = each.key
+  name              = each.value.name
   key_id            = try(aws_kms_key.this[0].arn, aws_kms_external_key.this[0].arn, aws_kms_replica_key.this[0].arn, aws_kms_replica_external_key.this[0].arn)
   grantee_principal = each.value.grantee_principal
   operations        = each.value.operations
